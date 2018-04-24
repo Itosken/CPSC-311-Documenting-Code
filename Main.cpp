@@ -380,15 +380,15 @@ uint64_t	TestShowAll()
 	}
 
 	cout << "  Populated catalog." << endl;
-//	success = catalog.AddCategory(1, "Category One");
-//	success &= catalog.AddProduct(1, 1, "Product One");
-//	success &= catalog.AddProduct(1, 2, "Product Two");
-//	success &= catalog.AddProduct(1, 3, "Product Three");
-//
-//	success = catalog.AddCategory(2, "Category Two");
-//	success &= catalog.AddProduct(2, 4, "Product Four");
-//	success &= catalog.AddProduct(2, 5, "Product Five");
-//	success &= catalog.AddProduct(2, 6, "Product Six");
+	success = catalog.AddCategory(1, "Category One");
+	success &= catalog.AddProduct(1, 1, "Product One");
+	success &= catalog.AddProduct(1, 2, "Product Two");
+	success &= catalog.AddProduct(1, 3, "Product Three");
+
+	success = catalog.AddCategory(2, "Category Two");
+	success &= catalog.AddProduct(2, 4, "Product Four");
+	success &= catalog.AddProduct(2, 5, "Product Five");
+	success &= catalog.AddProduct(2, 6, "Product Six");
 
 	catalog.ShowAll(actualStream);
 

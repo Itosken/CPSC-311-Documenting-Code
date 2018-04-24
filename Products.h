@@ -10,6 +10,7 @@
 #include "Catalog.h"
 
 struct Products{
+	int categoryN;
 	int productNum;
 	string prodName;
 

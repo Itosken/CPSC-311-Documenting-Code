@@ -69,7 +69,7 @@ class	Catalog
 		typedef cateMap::iterator cateMapIt;
 		typedef pair<cateMap,bool> cateMapStatus;
 
-		typedef map<int,Products*> prodMap;
+		typedef map<int,Products> prodMap;
 		typedef prodMap::value_type prodMapValue;
 		typedef prodMap::iterator prodMapIt;
 
