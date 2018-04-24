@@ -1,3 +1,11 @@
+//============================================================================
+// Name        : CS.cpp
+// Author      : 
+// Version     :
+// Copyright   : Your copyright notice
+// Description : CS131 Projecy #3
+//============================================================================
+
 //****************************************************************************************
 //
 //	INCLUDE FILES
@@ -66,25 +74,25 @@ int main (int argc, char * const argv[])
 	//************************************************************************************
 	//	LOCAL DATA
 	uint64_t	score;
-	
+
 	//************************************************************************************
 	//	EXECUTABLE STATEMENTS
 	score = 0;
-	
+
 	score += TestAddCategory();
-	
+
 	score += TestAddProduct();
-	
+
 	score += TestLoad();
-	
+
 	score += TestShowProduct();
-	
+
 	score += TestShowCategory();
-	
+
 	score += TestShowAll();
 
 	cout << endl << "Passed: " << score << " out of 18 tests" << endl;
-	
+
 	cout << endl << "** Finished **" << endl;
 
 //	system("pause");
@@ -101,26 +109,26 @@ uint64_t	TestAddCategory()
 	//************************************************************************************
 	//	LOCAL DATA
 	stringstream	actualStream;
-	
+
 	Catalog			catalog;
-	
+
 	stringstream	expectedStream;
-	
+
 	uint64_t		score;
 
 	bool			success;
-	
+
 	//************************************************************************************
 	//	EXECUTABLE STATEMENTS
 	cout << "TestAddCategory" << endl;
 
 	score = 0;
-	
+
 	cout << "  Valid category." << endl;
 	success = catalog.AddCategory(1, "Category One");
 	success &= catalog.AddCategory(2, "Category Two");
 	success &= catalog.AddCategory(3, "Category Three");
-	
+
 	uint64_t categoryCount = catalog.GetCategoryCount();
 	cout << "    Category count." << endl;
 	if (categoryCount == 3)
@@ -158,28 +166,28 @@ uint64_t	TestAddProduct()
 	//************************************************************************************
 	//	LOCAL DATA
 	stringstream	actualStream;
-	
+
 	Catalog			catalog;
-	
+
 	stringstream	expectedStream;
-	
+
 	uint64_t		score;
-	
+
 	bool			success;
-	
+
 	//************************************************************************************
 	//	EXECUTABLE STATEMENTS
 	cout << endl << "TestAddProduct" << endl;
-	
+
 	score = 0;
-	
+
 	cout << "  Valid category." << endl;
 	success = catalog.AddCategory(1, "Category One");
-	
+
 	success &= catalog.AddProduct(1, 1, "Product One");
 	success &= catalog.AddProduct(1, 2, "Product Two");
 	success &= catalog.AddProduct(1, 3, "Product Three");
-	
+
 	cout << "    Product count for category 1." << endl;
 	int64_t productCount = catalog.GetProductCount(1);
 	if (productCount == 3)
@@ -191,7 +199,7 @@ uint64_t	TestAddProduct()
 	{
 		cout << "      Fail. Actual: " << productCount << ". Expected: 3" << endl;
 	}
-	
+
 	cout << "  Duplicate product." << endl;
 	success = catalog.AddProduct(1, 3, "Product Duplicate Three");
 	if (!success)
@@ -203,7 +211,7 @@ uint64_t	TestAddProduct()
 	{
 		cout << "    Fail. Duplicate not detected." << endl;
 	}
-	
+
 	cout << "  Nonexistent category." << endl;
 	success &= catalog.AddProduct(2, 3, "Nonexistent category");
 	if (!success)
@@ -215,7 +223,7 @@ uint64_t	TestAddProduct()
 	{
 		cout << "    Fail. Nonexistent category not detected." << endl;
 	}
-		
+
 	return(score);
 }
 
@@ -229,27 +237,27 @@ uint64_t	TestLoad()
 	//************************************************************************************
 	//	LOCAL DATA
 	stringstream	actualStream;
-	
+
 	Catalog			catalog1;
-	
+
 	Catalog			catalog2;
-	
+
 	uint64_t		categoryCount;
-	
+
 	stringstream	expectedStream;
-	
+
 	uint64_t		productCount;
-	
+
 	uint64_t		score;
-	
+
 	bool			success;
 
 	//************************************************************************************
 	//	EXECUTABLE STATEMENTS
 	cout << endl << "TestLoad" << endl;
-	
+
 	score = 0;
-	
+
 	cout << "  Load small catalog." << endl;
 	cout << "    Category count." << endl;
 	success = catalog1.Load("SmallCatalog.txt");
@@ -311,7 +319,7 @@ uint64_t	TestLoad()
 		{
 			cout << "      Fail. Actual: " << categoryCount << ". Expected: 18" << endl;
 		}
-		
+
 		cout << "    Product count for category 8." << endl;
 		productCount = catalog2.GetProductCount(8);
 		if (productCount == 149)
@@ -328,7 +336,7 @@ uint64_t	TestLoad()
 	{
 		cout << "    Fail. Couldn't load file." << endl;
 	}
-		
+
 	return(score);
 }
 
@@ -342,23 +350,23 @@ uint64_t	TestShowAll()
 	//************************************************************************************
 	//	LOCAL DATA
 	stringstream	actualStream;
-	
+
 	Catalog			catalog;
-	
+
 	stringstream	expectedStream;
-	
+
 	uint64_t		score;
-	
+
 	stringstream	stream;
-	
+
 	bool			success;
-	
+
 	//************************************************************************************
 	//	EXECUTABLE STATEMENTS
 	cout << endl << "TestShowAll" << endl;
-	
+
 	score = 0;
-	
+
 	cout << "  Empty catalog." << endl;
 	success = catalog.ShowAll(actualStream);
 	if (!success)
@@ -372,18 +380,18 @@ uint64_t	TestShowAll()
 	}
 
 	cout << "  Populated catalog." << endl;
-	success = catalog.AddCategory(1, "Category One");
-	success &= catalog.AddProduct(1, 1, "Product One");
-	success &= catalog.AddProduct(1, 2, "Product Two");
-	success &= catalog.AddProduct(1, 3, "Product Three");
-	
-	success = catalog.AddCategory(2, "Category Two");
-	success &= catalog.AddProduct(2, 4, "Product Four");
-	success &= catalog.AddProduct(2, 5, "Product Five");
-	success &= catalog.AddProduct(2, 6, "Product Six");
-	
+//	success = catalog.AddCategory(1, "Category One");
+//	success &= catalog.AddProduct(1, 1, "Product One");
+//	success &= catalog.AddProduct(1, 2, "Product Two");
+//	success &= catalog.AddProduct(1, 3, "Product Three");
+//
+//	success = catalog.AddCategory(2, "Category Two");
+//	success &= catalog.AddProduct(2, 4, "Product Four");
+//	success &= catalog.AddProduct(2, 5, "Product Five");
+//	success &= catalog.AddProduct(2, 6, "Product Six");
+
 	catalog.ShowAll(actualStream);
-	
+
 	expectedStream << "Category\t1\tCategory One" << endl
 		<< "1\tProduct One" << endl
 		<< "2\tProduct Two" << endl
@@ -392,7 +400,7 @@ uint64_t	TestShowAll()
 		<< "4\tProduct Four" << endl
 		<< "5\tProduct Five" << endl
 		<< "6\tProduct Six";
-	
+
 	if (Verify(actualStream, expectedStream))
 	{
 		cout << "    Pass." << endl;
@@ -402,7 +410,7 @@ uint64_t	TestShowAll()
 	{
 		cout << "    Fail." << endl;
 	}
-	
+
 	return(score);
 }
 
@@ -416,23 +424,23 @@ uint64_t	TestShowCategory()
 	//************************************************************************************
 	//	LOCAL DATA
 	stringstream	actualStream;
-	
+
 	Catalog			catalog;
-	
+
 	stringstream	expectedStream;
-	
+
 	uint64_t		score;
-	
+
 	stringstream	stream;
-	
+
 	bool			success;
-	
+
 	//************************************************************************************
 	//	EXECUTABLE STATEMENTS
 	cout << endl << "TestShowCategory" << endl;
-	
+
 	score = 0;
-	
+
 	cout << "  Empty catalog." << endl;
 	success = catalog.ShowCategory(actualStream, 2);
 	if (!success)
@@ -444,18 +452,18 @@ uint64_t	TestShowCategory()
 	{
 		cout << "    Fail. ShowCategory should return false when catalog is empty." << endl;
 	}
-	
+
 	cout << "  Populated catalog." << endl;
 	success &= catalog.AddCategory(1, "Category One");
 	success &= catalog.AddProduct(1, 1, "Product One");
 	success &= catalog.AddProduct(1, 2, "Product Two");
 	success &= catalog.AddProduct(1, 3, "Product Three");
-	
+
 	success = catalog.AddCategory(2, "Category Two");
 	success &= catalog.AddProduct(2, 4, "Product Four");
 	success &= catalog.AddProduct(2, 5, "Product Five");
 	success &= catalog.AddProduct(2, 6, "Product Six");
-	
+
 	success = catalog.ShowCategory(actualStream, 2);
 	if (success)
 	{
@@ -463,7 +471,7 @@ uint64_t	TestShowCategory()
 		<< "4\tProduct Four" << endl
 		<< "5\tProduct Five" << endl
 		<< "6\tProduct Six";
-		
+
 		if (Verify(actualStream, expectedStream))
 		{
 			cout << "    Pass." << endl;
@@ -478,7 +486,7 @@ uint64_t	TestShowCategory()
 	{
 		cout << "    Fail." << endl;
 	}
-	
+
 	cout << "  Nonexistent category." << endl;
 	success = catalog.ShowCategory(actualStream, 3);
 	if (!success)
@@ -504,28 +512,28 @@ uint64_t	TestShowProduct()
 	//************************************************************************************
 	//	LOCAL DATA
 	stringstream	actualStream;
-	
+
 	Catalog			catalog;
-	
+
 	stringstream	expectedStream;
-	
+
 	uint64_t		score;
-	
+
 	stringstream	stream;
-	
+
 	bool			success;
-	
+
 	//************************************************************************************
 	//	EXECUTABLE STATEMENTS
 	cout << endl << "TestShowProduct" << endl;
-	
+
 	score = 0;
-	
+
 	success = catalog.AddCategory(1, "Category One");
 	success &= catalog.AddProduct(1, 1, "Product One");
 	success &= catalog.AddProduct(1, 2, "Product Two");
 	success &= catalog.AddProduct(1, 3, "Product Three");
-	
+
 	success = catalog.AddCategory(2, "Category Two");
 	success &= catalog.AddProduct(2, 4, "Product Four");
 	success &= catalog.AddProduct(2, 5, "Product Five");
@@ -536,7 +544,7 @@ uint64_t	TestShowProduct()
 	if (success)
 	{
 		expectedStream << "3\tProduct Three";
-		
+
 		if (Verify(actualStream, expectedStream))
 		{
 			cout << "    Pass." << endl;
@@ -551,7 +559,7 @@ uint64_t	TestShowProduct()
 	{
 		cout << "    Fail." << endl;
 	}
-	
+
 	cout << "  Nonexistent category." << endl;
 	success = catalog.ShowProduct(actualStream, 3, 3);
 	if (!success)
@@ -563,7 +571,7 @@ uint64_t	TestShowProduct()
 	{
 		cout << "    Fail." << endl;
 	}
-	
+
 	cout << "  Valid category, nonexistent product." << endl;
 	success = catalog.ShowProduct(actualStream, 1, 4);
 	if (!success)
@@ -575,7 +583,7 @@ uint64_t	TestShowProduct()
 	{
 		cout << "    Fail." << endl;
 	}
-	
+
 	return(score);
 }
 
@@ -589,13 +597,13 @@ bool	Verify(stringstream& actualStream, stringstream& expectedStream)
 	//************************************************************************************
 	//	LOCAL DATA
 	vector<string>	actualText;
-	
+
 	vector<string>	expectedText;
 
 	string			line;
 
 	bool			success;
-	
+
 	//************************************************************************************
 	//	EXECUTABLE STATEMENTS
 	while (true)
@@ -610,7 +618,7 @@ bool	Verify(stringstream& actualStream, stringstream& expectedStream)
 			break;
 		}
 	}
-	
+
 	while (true)
 	{
 		GetLine(expectedStream, line);
@@ -623,23 +631,23 @@ bool	Verify(stringstream& actualStream, stringstream& expectedStream)
 			break;
 		}
 	}
-	
+
 	if (actualText != expectedText)
 	{
 		cout << "Actual text doesn't match expected text." << endl;
-		
+
 		cout << "Actual:" << endl;
 		for (size_t i = 0; i < actualText.size(); ++i)
 		{
 			cout << actualText[i] << endl;
 		}
-		
+
 		cout << "Expected:" << endl;
 		for (size_t i = 0; i < expectedText.size(); ++i)
 		{
 			cout << expectedText[i] << endl;
 		}
-		
+
 		success = false;
 	}
 	else
@@ -668,3 +676,4 @@ void	Class::Function()
 }
 
 #endif
+

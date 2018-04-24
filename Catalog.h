@@ -8,6 +8,10 @@
 //****************************************************************************************
 #include	<iostream>
 #include	<string>
+#include 	<map>
+#include 	"Categories.h"
+#include 	"Products.h"
+#include 	<sstream>
 
 using namespace std;
 
@@ -57,8 +61,21 @@ class	Catalog
 		bool		ShowAll(ostream& stream);
 
 	private:
-	
+
+		//cateMap has prodMap
 		// map declaration goes here
+		typedef map<int,string> cateMap;
+		typedef cateMap::value_type cateMapValue;
+		typedef cateMap::iterator cateMapIt;
+		typedef pair<cateMap,bool> cateMapStatus;
+
+		typedef map<int,Products*> prodMap;
+		typedef prodMap::value_type prodMapValue;
+		typedef prodMap::iterator prodMapIt;
+
+		prodMap prod;
+		cateMap cate;
+		int cateCounter = 0;
 
 };
 
